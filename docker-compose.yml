@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_DB: visitor_register
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: motdepasse
+    ports:
+      - "5432:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: visitor-backend
+    restart: always
+    environment:
+      APP_ENV: dev
+      DATABASE_URL: "postgresql://postgres:motdepasse@db:5432/visitor_register?serverVersion=15&charset=utf8"
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    command: bash -c "composer install && php bin/console doctrine:migrations:migrate --no-interaction || true && symfony server:start --no-tls --port=8000 --allow-http"
+
+  frontend:
+    build: ./frontend
+    container_name: visitor-frontend
+    restart: always
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "4200:4200"
+    working_dir: /app
+    command: bash -c "npm install && npx ng serve --host 0.0.0.0 --port 4200"
+
+volumes:
+  db-data:
