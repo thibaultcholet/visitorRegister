@@ -1,0 +1,3 @@
+# Dossier de logs
+Ce dossier contient les fichiers de logs de l'application.
+Les logs sont automatiquement exclus du versioning Git.
