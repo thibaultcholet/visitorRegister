@@ -11,6 +11,8 @@ Une application web moderne et intuitive pour la gestion des arrivées et dépar
 
 Cette application permet de gérer efficacement les flux de visiteurs avec une interface utilisateur moderne, des animations engageantes et un système d'administration complet.
 
+**🔒 Conformité RGPD** : Conçue spécialement pour aider les entreprises à respecter le Règlement Général sur la Protection des Données (RGPD). L'application offre une solution simple et sécurisée pour l'enregistrement des visiteurs, idéale pour déploiement sur tablette en réception d'entreprise.
+
 ### ✨ Fonctionnalités principales
 
 - **🚪 Enregistrement d'arrivée** : Formulaire intelligent avec pré-remplissage automatique
